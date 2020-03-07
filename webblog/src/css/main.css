@@ -1,0 +1,16 @@
+:root {
+  --red: #ff4f57;
+}
+
+html {
+  font-family: sans-serif;
+}
+
+body {
+  padding: 0 2rem;
+  overflow-x: hidden;
+}
+
+link {
+  color: var(--red);
+}

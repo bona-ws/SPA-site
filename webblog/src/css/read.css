@@ -1,0 +1,55 @@
+.blog-section {
+  padding: 0 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.content {
+  padding: 0 20%;
+}
+
+.thumbnail {
+  padding: 0 25px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.category {
+  color: red;
+  font-weight: bold;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.sub_title {
+  font-size: 0.8rem;
+  padding: 0 20%;
+}
+.author,
+.read-count > i {
+  color: var(--red);
+}
+
+.content-body {
+  text-align: left;
+  font-size: 0.9rem;
+  color: black;
+  border-top: solid 1px var(--red);
+  margin-top: 1rem;
+}
+
+.content-header .detail {
+  font-size: 0.8rem;
+}
+
+a {
+  color: var(--red);
+}
+a:hover {
+  color: black;
+}
