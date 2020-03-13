@@ -18,21 +18,18 @@ export class BlogLists extends Component {
       visible: 6,
       loadMore: false
     };
-
-    this.loadMore = this.loadMore.bind(this);
   }
 
-  loadMore() {
+  loadMore = () => {
     this.setState(prev => {
       return { visible: prev.visible + 3 };
     });
-  }
+  };
 
   componentDidMount() {
     const category = this.props.match.params.category;
-
     // get blogs content from api
-    fetch(`http://localhost:9000/blogs/${category ? category : ""}`)
+    fetch(`http://localhost:9000/api/v1/blogs/${category ? category : ""}`)
       .then(res => res.json())
       .then(
         result => {

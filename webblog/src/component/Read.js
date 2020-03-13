@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { blogFormatDate } from "../helper/formatDate";
-import { useParams } from "react-router-dom";
 import "../css/read.css";
 
 export class Read extends Component {
@@ -52,7 +51,7 @@ export class Read extends Component {
                 <img
                   className="thumbnail"
                   src={
-                    "http://localhost/geeksjapan/uploads/blog/thumbnail/" +
+                    "https://geeksjapan.asia/uploads/blog/thumbnail/" +
                     blog.thumbnail
                   }
                   alt="thumbnail"
