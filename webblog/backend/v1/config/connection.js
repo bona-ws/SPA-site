@@ -1,10 +1,6 @@
 const mysql = require("mysql");
 
 const db_config = {
-  // host: "156.67.212.239",
-  // user: "u5995498_nara",
-  // password: "cekenitjeges",
-  // database: "u5995498_blog_dummy"
   host: "localhost",
   user: "root",
   password: "",
@@ -22,7 +18,7 @@ const ping = ping => {
   console.log("ping connection :");
   return dbConnection.ping(err => {
     if (err) {
-      console.error(`error connecting: ${err.stack}`);
+      console.error("error connecting: " + err.stack);
       return false;
     } else {
       console.log(
@@ -36,5 +32,5 @@ const ping = ping => {
 
 setInterval(() => ping(), 10000);
 
-//export dbConnection
+//export db connection
 module.exports = dbConnection;

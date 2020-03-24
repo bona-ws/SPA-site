@@ -1,3 +1,5 @@
+"use strict";
+
 const response = require("../config/response");
 const connection = require("../config/connection");
 

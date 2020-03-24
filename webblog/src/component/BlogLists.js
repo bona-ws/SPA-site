@@ -28,8 +28,9 @@ export class BlogLists extends Component {
 
   componentDidMount() {
     const category = this.props.match.params.category;
+
     // get blogs content from api
-    fetch(`http://localhost:9000/api/v1/blogs/${category ? category : ""}`)
+    fetch(`http://localhost:9000/blogs/${category ? category : ""}`)
       .then(res => res.json())
       .then(
         result => {
