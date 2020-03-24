@@ -1,33 +1,22 @@
 import React, { Component } from "react";
-import { Button } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import "../css/header.css";
 
 export class Header extends Component {
   render() {
     return (
       <div className="header">
-        <a href="..">
+        <Link to="/">
           <img
             src="https://geeksjapan.asia/assets/img/logo.png"
             alt="Logo"
             width="120px"
           />
-        </a>
-        <Button href="/category/life" color="secondary">
-          Life
-        </Button>
-        <Button href="/category/explore" color="secondary">
-          Explore
-        </Button>
-        <Button href="/category/work" color="secondary">
-          Work
-        </Button>
-        <Button href="/category/culture" color="secondary">
-          Culture
-        </Button>
-        <Button href="/category/learn" color="secondary">
-          Learn
-        </Button>
+        </Link>
+        <Link to="/category/life">Life</Link>
+        <Link to="/category/explore">Explore</Link>
+        <Link to="/category/work">Work</Link>
+        <Link to="/category/culture">Culture</Link>
       </div>
     );
   }
