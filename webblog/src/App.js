@@ -1,9 +1,11 @@
 import React, { Component, Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 import Header from "./component/Header";
 import Footer from "./component/Footer";
 import BlogLists from "./component/BlogLists";
 import Read from "./component/Read";
+import Login from "./Login";
 
 export class App extends Component {
   render() {
@@ -11,13 +13,15 @@ export class App extends Component {
       <Fragment>
         <Router>
           <Header />
-          {/* <Switch> */}
-          <Route exact path="/" component={BlogLists} />
+          <Switch>
+            <Route exact path="/" component={BlogLists} />
 
-          <Route path="/category/:category" component={BlogLists} />
+            <Route path="/category/:category" component={BlogLists} />
 
-          <Route path="/read/:title/" component={Read} />
-          {/* </Switch> */}
+            <Route path="/read/:title/" component={Read} />
+
+            <Route path="/login" component={Login} />
+          </Switch>
           <Footer />
         </Router>
       </Fragment>

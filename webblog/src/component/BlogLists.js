@@ -77,6 +77,7 @@ export class BlogLists extends Component {
             {/* slice object from api */}
             {blogs.slice(0, this.state.visible).map(blog => (
               // looping blog items start
+
               <Grid item md={4} sm={12} key={blog.id_blog}>
                 <Card className="card">
                   <CardActionArea>
@@ -89,6 +90,7 @@ export class BlogLists extends Component {
                         alt="Thumbnail"
                       />
                     </div>
+
                     <CardContent>
                       <h5>
                         <i className="fa fa-book"></i> {blog.category}
@@ -99,6 +101,7 @@ export class BlogLists extends Component {
                       <span>{blog.sub_title.substring(0, 120) + " ..."}</span>
                     </CardContent>
                   </CardActionArea>
+
                   <CardActions>
                     <Link to={"../read/" + blog.title.split(" ").join("-")}>
                       Read More

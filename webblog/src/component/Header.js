@@ -17,6 +17,7 @@ export class Header extends Component {
         <Link to="/category/explore">Explore</Link>
         <Link to="/category/work">Work</Link>
         <Link to="/category/culture">Culture</Link>
+        <Link to="/login"> | Login | </Link>
       </div>
     );
   }
