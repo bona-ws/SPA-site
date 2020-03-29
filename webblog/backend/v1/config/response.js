@@ -1,11 +1,11 @@
-"use strict";
-
 exports.ok = (values, res) => {
-  var data = {
-    status: 200,
-    data: values
-  };
+  if (values.length > 0) {
+    const data = {
+      status: 200,
+      data: values
+    };
+    res.json(data);
+  } else res.json(null);
 
-  res.json(data);
   res.end();
 };

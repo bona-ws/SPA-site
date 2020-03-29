@@ -8,7 +8,8 @@ export class Read extends Component {
 
     this.state = {
       error: null,
-      isLoaded: false
+      isLoaded: false,
+      blogs: null
     };
   }
 

@@ -5,7 +5,7 @@ export const logout = () => {
     // remove user from local storage to log user out
     dispatch({ type: "USER_LOGOUT" });
     localStorage.removeItem("user");
-    history.push("/admin");
+    history.push("/login");
   };
 };
 

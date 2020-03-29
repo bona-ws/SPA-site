@@ -12,7 +12,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  login: login
+  login
 };
 
 export class Login extends Component {
@@ -23,9 +23,6 @@ export class Login extends Component {
       password: "",
       submitted: false
     };
-
-    // this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange = event => {
@@ -49,15 +46,14 @@ export class Login extends Component {
 
     return (
       <div className="section">
-        <h2>Login Page</h2>
-        <h2>is Login {this.props.loggedIn ? "true" : "false"}</h2>
+        <h2>Welcome Back</h2>
 
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
             name="email"
             id="email"
-            placeholder="email"
+            placeholder="Email"
             value={email}
             onChange={this.handleChange}
           />
@@ -66,13 +62,13 @@ export class Login extends Component {
             type="password"
             name="password"
             id="password"
-            placeholder="password"
+            placeholder="Password"
             value={password}
             onChange={this.handleChange}
           />
           {submitted && !password && <p>Password is required</p>}
           <Button color="secondary" variant="contained" type="submit">
-            Submit
+            Login
           </Button>
         </form>
       </div>
