@@ -1,0 +1,43 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: solid 1px lightgrey;
+  padding: 1rem 0;
+  z-index: 999;
+  background-color: white;
+  width: 100%;
+}
+
+.menu-dropdown {
+  position: relative;
+}
+
+.menu-dropdown > ul {
+  background-color: white;
+  position: absolute;
+  visibility: hidden;
+  list-style-type: none;
+  border: solid 1px lightgrey;
+  top: 0.2rem;
+  padding: 1rem;
+  z-index: 9999;
+  min-width: 80px;
+  opacity: 0;
+  transition: visibility 0.2s, opacity 0.6s;
+}
+
+.menu-list li {
+  margin-bottom: 1rem;
+}
+
+#show-menu:hover + .menu-list {
+  visibility: visible;
+  opacity: 1;
+}
+
+ul.menu-list:hover {
+  visibility: visible;
+  opacity: 1;
+}

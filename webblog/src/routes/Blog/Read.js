@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { blogFormatDate } from "../../_helper/formatDate";
-import "../../css/read.css";
+import "../../assets/css/read.css";
 
 export class Read extends Component {
   constructor(props) {

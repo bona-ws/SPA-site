@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import logout from "../_action/logout";
-import "../css/header.css";
+import "../assets/css/header.css";
+import logo from "../assets/img/logo.PNG";
 
 const mapStateToProps = state => {
   const { loggedIn } = state.authentication;
@@ -25,20 +25,42 @@ export class Header extends Component {
     return (
       <div className="header">
         <Link to="/">
-          <img
-            src="https://geeksjapan.asia/assets/img/logo.png"
-            alt="Logo"
-            width="120px"
-          />
+          <img src={logo} alt="Logo" width="120px" />
         </Link>
         <Link to="/category/life">Life</Link>
         <Link to="/category/explore">Explore</Link>
         <Link to="/category/work">Work</Link>
         <Link to="/category/culture">Culture</Link>
         {loggedIn ? (
-          <Button onClick={logout}> | Logout | </Button>
+          <div className="menu-dropdown">
+            <Link to="#!" id="show-menu">
+              Account
+            </Link>
+            <ul className="menu-list">
+              <li>
+                <Link to="/profile">My Profile</Link>
+              </li>
+              <li>
+                <Link to="/dashboard">Dashboard</Link>
+              </li>
+              <li>
+                <Link to="/write">Write</Link>
+              </li>
+              <li>
+                <Link to="help">Help</Link>
+              </li>
+              <li>
+                <Link to="#!" onClick={logout}>
+                  Logout
+                </Link>
+              </li>
+            </ul>
+          </div>
         ) : (
-          <Link to="/login"> | Login | </Link>
+          <div>
+            <Link to="/login"> | Login | </Link>
+            <Link to="/register"> | Register | </Link>
+          </div>
         )}
       </div>
     );

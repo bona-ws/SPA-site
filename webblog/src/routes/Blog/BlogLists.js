@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+
+import ButtonComponent from "../../component/Button";
+
 import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import "../../css/blogs.css";
-import "../../css/loader.css";
+import "../../assets/css/blogs.css";
+import "../../assets/css/loader.css";
 
 export class BlogLists extends Component {
   constructor(props) {
@@ -23,7 +25,7 @@ export class BlogLists extends Component {
 
   loadMore = () => {
     this.setState(prev => {
-      return { visible: prev.visible + 3 };
+      return { visible: prev.visible + 6 };
     });
   };
 
@@ -115,13 +117,10 @@ export class BlogLists extends Component {
             {/* button load more start */}
             {this.state.visible < this.state.blogs.length && (
               <div className="load-more">
-                <Button
-                  variant="contained"
-                  color="secondary"
+                <ButtonComponent
+                  ButtonName={"Load More"}
                   onClick={this.loadMore}
-                >
-                  Load more
-                </Button>
+                />
               </div>
             )}
             {/* button load more end */}

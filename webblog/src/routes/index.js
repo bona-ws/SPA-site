@@ -9,6 +9,7 @@ import Footer from "../component/Footer";
 import BlogLists from "./Blog/BlogLists";
 import Read from "./Blog/Read";
 import Login from "./Login";
+import Register from "./Register";
 import Dashboard from "./Dashboard";
 
 export class Routes extends Component {
@@ -30,6 +31,7 @@ export class Routes extends Component {
           <Route path="/category/:category" component={BlogLists} />
           <Route path="/read/:title/" component={Read} />
           <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
           <Route from="*" to="/" />
         </Switch>
         <Footer />

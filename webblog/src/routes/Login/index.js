@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import Button from "@material-ui/core/Button";
-
 import { connect } from "react-redux";
 
+import Button from "../../component/Button";
 import { login } from "../../_action/login";
-import "../../css/login.css";
+import "../../assets/css/login.css";
 
 const mapStateToProps = state => {
   const { loggingIn, loggedIn } = state.authentication;
@@ -33,11 +32,12 @@ export class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-
     this.setState({ submitted: true, email: "", password: "" });
     const { email, password } = this.state;
+
     if (email && password) {
       this.props.login(email, password);
+      this.setState({ submitted: false });
     }
   };
 
@@ -67,9 +67,7 @@ export class Login extends Component {
             onChange={this.handleChange}
           />
           {submitted && !password && <p>Password is required</p>}
-          <Button color="secondary" variant="contained" type="submit">
-            Login
-          </Button>
+          <Button ButtonName={"Login"} type={"submit"} />
         </form>
       </div>
     );

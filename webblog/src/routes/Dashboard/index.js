@@ -24,7 +24,7 @@ export class Dashboard extends Component {
     return (
       <div>
         {userSession.map(user => (
-          <h1 key={user.email}>Hello, {user.username}</h1>
+          <h1 key={user.id}>Hello, {user.username}</h1>
         ))}
       </div>
     );

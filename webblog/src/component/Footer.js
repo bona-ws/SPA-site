@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
-import "../css/footer.css";
+import "../assets/css/footer.css";
+import logo from "../assets/img/logo.PNG";
 
 export class Footer extends Component {
   render() {
@@ -8,16 +9,10 @@ export class Footer extends Component {
       <div className="footer">
         <Grid container spacing={6}>
           <Grid item md={4} sm={12}>
-            <img
-              src="https://geeksjapan.asia/assets/img/logo/logo_white.png"
-              width="120"
-              alt="logo"
-            />
+            <img src={logo} width="120" alt="logo" />
             <p>
-              Geeks Japan is a job search site for IT talent looking for career
-              opportunities abroad especially in Japan, this program is targeted
-              to people who wants to pursue and sharpen in their expertise in IT
-              industry.
+              Lets Blog is a blog portal site for writer who want to write and
+              share articles about anything. Lets Blogging !
             </p>
           </Grid>
 

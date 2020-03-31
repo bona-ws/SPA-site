@@ -1,0 +1,31 @@
+:root {
+  --pallete: #ff7400;
+}
+
+html {
+  font-family: sans-serif;
+}
+
+body {
+  padding: 0 2rem;
+  overflow-x: hidden;
+}
+
+link,
+a {
+  color: var(--pallete);
+}
+
+a {
+  text-decoration: none;
+}
+
+.button {
+  background-color: var(--pallete) !important;
+  color: black !important;
+  transition: 0.5s !important;
+}
+
+.button:hover {
+  color: white !important;
+}
