@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import Button from "../../component/Button";
-import { login } from "../../_action/login";
+import { login } from "../../modules/action/login";
 import "../../assets/css/login.css";
 
-const mapStateToProps = state => {
-  const { loggingIn, loggedIn } = state.authentication;
-  return { loggingIn, loggedIn };
-};
+const mapStateToProps = state => ({
+  loggingIn: state.authentication.loggingIn,
+  loggedIn: state.authentication.loggedIn
+});
 
 const mapDispatchToProps = {
   login

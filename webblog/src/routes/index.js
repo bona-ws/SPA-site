@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Router, Route, Switch } from "react-router-dom";
 
-import history from "../_helper/history";
+import history from "../helper/history";
 import PrivateRoute from "./PrivateRoute";
 
 import Header from "../component/Header";

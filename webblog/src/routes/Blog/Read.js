@@ -1,43 +1,24 @@
 import React, { Component } from "react";
-import { blogFormatDate } from "../../_helper/formatDate";
+import { connect } from "react-redux";
+
+import { getBlogContent } from "../../modules/action/getBlogContent";
+import { blogFormatDate } from "../../helper/formatDate";
 import "../../assets/css/read.css";
 
 export class Read extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      error: null,
-      isLoaded: false,
-      blogs: null
-    };
+    this.state = {};
   }
 
   componentDidMount() {
     const title = this.props.match.params.title;
-
-    // get blogs content from api
-    fetch(`http://localhost:9000/blog/read/${title}`)
-      .then(res => res.json())
-      .then(
-        result => {
-          this.setState({
-            isLoaded: true,
-            blogs: result.data
-          });
-        },
-
-        error => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      );
+    this.props.getBlogContent(title);
   }
 
   render() {
-    const { error, isLoaded, blogs } = this.state;
+    const { error, isLoaded, blogs } = this.props;
 
     if (error) {
       return <div>Error: {error.message}</div>;
@@ -47,7 +28,7 @@ export class Read extends Component {
       return (
         <div className="blog-section">
           {blogs.map(blog => (
-            <div className="content">
+            <div className="content" key={blog.id_blog}>
               <div className="content-header">
                 <img
                   className="thumbnail"
@@ -76,7 +57,7 @@ export class Read extends Component {
               </div>
 
               <div
-                class="content-body"
+                className="content-body"
                 dangerouslySetInnerHTML={{ __html: blog.content }}
               />
             </div>
@@ -87,4 +68,14 @@ export class Read extends Component {
   }
 }
 
-export default Read;
+const mapStateToProps = state => ({
+  isLoaded: state.getBlog.isLoaded,
+  error: state.getBlog.error,
+  blogs: state.getBlog.blogs
+});
+
+const mapDispatchToProps = {
+  getBlogContent
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Read);

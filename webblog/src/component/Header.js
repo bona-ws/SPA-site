@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import logout from "../_action/logout";
+import logout from "../modules/action/logout";
 import "../assets/css/header.css";
 import logo from "../assets/img/logo.PNG";
 

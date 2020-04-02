@@ -1,23 +1,21 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
-import ButtonComponent from "../../component/Button";
-
+import { connect } from "react-redux";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
+
+import { getBlogLists } from "../../modules/action/getBlogLists";
+import ButtonComponent from "../../component/Button";
 import "../../assets/css/blogs.css";
 import "../../assets/css/loader.css";
 
 export class BlogLists extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      error: null,
-      isLoaded: false,
       visible: 6,
       loadMore: false
     };
@@ -29,57 +27,32 @@ export class BlogLists extends Component {
     });
   };
 
-  fetchData = categoryName => {
-    fetch(`http://localhost:9000/blogs/${categoryName ? categoryName : ""}`)
-      .then(res => res.json())
-      .then(
-        result => {
-          this.setState({
-            isLoaded: true,
-            blogs: result.data
-          });
-        },
-
-        error => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      );
-  };
-
   componentDidMount() {
     const categoryName = this.props.match.params.category;
-
-    this.fetchData(categoryName);
+    this.props.getBlogLists(categoryName);
   }
 
   shouldComponentUpdate(nextProps) {
     if (nextProps.match.params.category !== this.props.match.params.category) {
       const categoryName = nextProps.match.params.category;
-
-      this.fetchData(categoryName);
+      this.props.getBlogLists(categoryName);
     }
-
     return true;
   }
 
   render() {
-    const { error, isLoaded, blogs } = this.state;
-
+    const { visible } = this.state;
+    const { isLoaded, error, blogs } = this.props;
     if (error) {
-      return <div>Error: {error.message}</div>;
+      return <div> Error: {error.message} </div>;
     } else if (!isLoaded) {
       return <div className="lds-dual-ring"></div>;
     } else {
       return (
         <div className="blogs">
           <Grid container spacing={6}>
-            {/* slice object from api */}
-            {blogs.slice(0, this.state.visible).map(blog => (
-              // looping blog items start
-
+            {/* slice object from api & loop */}
+            {blogs.slice(0, visible).map(blog => (
               <Grid item md={4} sm={12} key={blog.id_blog}>
                 <Card className="card">
                   <CardActionArea>
@@ -92,7 +65,6 @@ export class BlogLists extends Component {
                         alt="Thumbnail"
                       />
                     </div>
-
                     <CardContent>
                       <h5>
                         <i className="fa fa-book"></i> {blog.category}
@@ -103,7 +75,6 @@ export class BlogLists extends Component {
                       <span>{blog.sub_title.substring(0, 120) + " ..."}</span>
                     </CardContent>
                   </CardActionArea>
-
                   <CardActions>
                     <Link to={"../read/" + blog.title.split(" ").join("-")}>
                       Read More
@@ -111,11 +82,10 @@ export class BlogLists extends Component {
                   </CardActions>
                 </Card>
               </Grid>
-              // looping blog items end
             ))}
-
+            {/* loop end */}
             {/* button load more start */}
-            {this.state.visible < this.state.blogs.length && (
+            {visible < blogs.length && (
               <div className="load-more">
                 <ButtonComponent
                   ButtonName={"Load More"}
@@ -131,4 +101,14 @@ export class BlogLists extends Component {
   }
 }
 
-export default BlogLists;
+const mapStateToProps = state => ({
+  isLoaded: state.getBlog.isLoaded,
+  error: state.getBlog.error,
+  blogs: state.getBlog.blogs
+});
+
+const mapDispatchToProps = {
+  getBlogLists
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BlogLists);
