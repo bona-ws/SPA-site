@@ -6,12 +6,6 @@ import { blogFormatDate } from "../../helper/formatDate";
 import "../../assets/css/read.css";
 
 export class Read extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-  }
-
   componentDidMount() {
     const title = this.props.match.params.title;
     this.props.getBlogContent(title);

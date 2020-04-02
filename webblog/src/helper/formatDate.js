@@ -1,5 +1,3 @@
-// import React from "react";
-
 export function blogFormatDate(date) {
   return Intl.DateTimeFormat("en-US", {
     month: "long",
