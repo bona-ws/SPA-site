@@ -21,7 +21,7 @@ export class Read extends Component {
     } else {
       return (
         <div className="blog-section">
-          {blogs.map(blog => (
+          {blogs.map((blog) => (
             <div className="content" key={blog.id_blog}>
               <div className="content-header">
                 <img
@@ -62,14 +62,14 @@ export class Read extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isLoaded: state.getBlog.isLoaded,
   error: state.getBlog.error,
-  blogs: state.getBlog.blogs
+  blogs: state.getBlog.blogs,
 });
 
 const mapDispatchToProps = {
-  getBlogContent
+  getBlogContent,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Read);

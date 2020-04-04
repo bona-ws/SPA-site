@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import logout from "../modules/action/logout";
 import "../assets/css/header.css";
-import logo from "../assets/img/logo.PNG";
+import logo from "../assets/img/logo.png";
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   const { loggedIn } = state.authentication;
   return { loggedIn };
 };
 
 const mapDispatchToProps = {
-  logout: logout
+  logout: logout,
 };
 
 export class Header extends Component {

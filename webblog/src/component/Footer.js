@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import "../assets/css/footer.css";
-import logo from "../assets/img/logo.PNG";
+import logo from "../assets/img/logo.png";
 
 export class Footer extends Component {
   render() {
