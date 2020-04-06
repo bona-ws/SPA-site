@@ -9,16 +9,17 @@ export const login = (email, password) => {
       .login(email, password)
       .then(user => {
         if (!user) {
-          dispatch({ type: "USER_LOGIN_FAILURE" });
-          history.push("/login");
+          dispatch({
+            type: "ALERT_ERROR",
+            message: "wrong username or password"
+          });
         } else {
           dispatch({ type: "USER_LOGIN_SUCCESS", user });
           history.push("/dashboard");
         }
       })
       .catch(error => {
-        dispatch({ type: "USER_LOGIN_FAILURE", error });
-        history.push("/login");
+        dispatch({ type: "ALERT_ERROR", error });
       });
   };
 };

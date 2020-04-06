@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
 import Grid from "@material-ui/core/Grid";
 import "../assets/css/footer.css";
 import logo from "../assets/img/logo.png";
@@ -19,11 +21,18 @@ export class Footer extends Component {
           <Grid item md={4} sm={12}>
             <h3>Quick Links</h3>
             <ul>
-              <li>Life</li>
-              <li>Explore</li>
-              <li>Working</li>
-              <li>Culture</li>
-              <li>Learn</li>
+              <li>
+                <Link to="/category/life">Life</Link>
+              </li>
+              <li>
+                <Link to="/category/explore">Explore</Link>
+              </li>
+              <li>
+                <Link to="/category/work">Working</Link>
+              </li>
+              <li>
+                <Link to="/category/culture">Culture</Link>
+              </li>
             </ul>
           </Grid>
 
