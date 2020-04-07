@@ -1,27 +1,27 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from "react"
+import { connect } from "react-redux"
 
-import { getBlogContent } from "../../modules/action/getBlogContent";
-import { blogFormatDate } from "../../helper/formatDate";
-import "../../assets/css/read.css";
+import { getBlogContent } from "../../modules/action/getBlogContent"
+import { blogFormatDate } from "../../helper/formatDate"
+import "../../assets/css/read.css"
 
 export class Read extends Component {
   componentDidMount() {
-    const title = this.props.match.params.title;
-    this.props.getBlogContent(title);
+    const title = this.props.match.params.title
+    this.props.getBlogContent(title)
   }
 
   render() {
-    const { error, isLoaded, blogs } = this.props;
+    const { error, isLoaded, blogs } = this.props
 
     if (error) {
-      return <div>Error: {error.message}</div>;
+      return <div>Error: {error.message}</div>
     } else if (!isLoaded) {
-      return <div className="lds-dual-ring"></div>;
+      return <div className="lds-dual-ring"></div>
     } else {
       return (
         <div className="blog-section">
-          {blogs.map((blog) => (
+          {blogs.map(blog => (
             <div className="content" key={blog.id_blog}>
               <div className="content-header">
                 <img
@@ -57,19 +57,19 @@ export class Read extends Component {
             </div>
           ))}
         </div>
-      );
+      )
     }
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   isLoaded: state.getBlog.isLoaded,
   error: state.getBlog.error,
-  blogs: state.getBlog.blogs,
-});
+  blogs: state.getBlog.blogs
+})
 
 const mapDispatchToProps = {
-  getBlogContent,
-};
+  getBlogContent
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Read);
+export default connect(mapStateToProps, mapDispatchToProps)(Read)

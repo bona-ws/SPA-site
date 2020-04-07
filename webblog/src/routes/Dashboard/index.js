@@ -1,25 +1,20 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-
-const mapStateToProps = state => {
-  const { user } = state.authentication;
-  return { user };
-};
+import React, { Component } from "react"
+import { connect } from "react-redux"
 
 export class Dashboard extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       userSession: this.props.user.data
-    };
+    }
   }
 
   componentDidMount() {
-    this.setState({});
+    this.setState({})
   }
 
   render() {
-    const { userSession } = this.state;
+    const { userSession } = this.state
 
     return (
       <div>
@@ -27,8 +22,12 @@ export class Dashboard extends Component {
           <h1 key={user.id}>Hello, {user.username}</h1>
         ))}
       </div>
-    );
+    )
   }
 }
 
-export default connect(mapStateToProps)(Dashboard);
+const mapStateToProps = state => ({
+  user: state.authentication.user
+})
+
+export default connect(mapStateToProps)(Dashboard)

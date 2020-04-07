@@ -5,15 +5,6 @@ import Button from "../../component/Button";
 import { login } from "../../modules/action/login";
 import "../../assets/css/login.css";
 
-const mapStateToProps = state => ({
-  loggingIn: state.authentication.loggingIn,
-  loggedIn: state.authentication.loggedIn
-});
-
-const mapDispatchToProps = {
-  login
-};
-
 export class Login extends Component {
   constructor(props) {
     super(props);
@@ -32,17 +23,17 @@ export class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.setState({ submitted: true, email: "", password: "" });
+    this.setState({ submitted: true });
     const { email, password } = this.state;
 
     if (email && password) {
       this.props.login(email, password);
-      this.setState({ submitted: false });
+      this.setState({ submitted: false, email: "", password: "" });
     }
   };
 
   render() {
-    const { submitted, email, password } = this.state;
+    const { email, password, submitted } = this.state;
 
     return (
       <div className="section">
@@ -73,5 +64,14 @@ export class Login extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  loggingIn: state.authentication.loggingIn,
+  loggedIn: state.authentication.loggedIn
+});
+
+const mapDispatchToProps = {
+  login
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

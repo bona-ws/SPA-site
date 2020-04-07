@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { Router, Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
+import Alert from "@material-ui/lab/Alert";
 
 import history from "../helper/history";
 import PrivateRoute from "./PrivateRoute";
+import { alertClear } from "../modules/action/alert";
 
 import Header from "../component/Header";
 import Footer from "../component/Footer";
@@ -18,13 +21,19 @@ export class Routes extends Component {
 
     history.listen((location, action) => {
       // clear alert on location change
-      // this.props.clearAlerts();
+      this.props.clearAlert();
     });
   }
   render() {
+    const { alert } = this.props;
     return (
       <Router history={history}>
         <Header />
+
+        {alert.message && (
+          <Alert severity={alert.severity}>{alert.message}</Alert>
+        )}
+
         <Switch>
           <PrivateRoute path="/dashboard" component={Dashboard} />
           <Route exact path="/" component={BlogLists} />
@@ -34,10 +43,19 @@ export class Routes extends Component {
           <Route path="/register" component={Register} />
           <Route from="*" to="/" />
         </Switch>
+
         <Footer />
       </Router>
     );
   }
 }
 
-export default Routes;
+const mapStateToProps = state => ({
+  alert: state.alert
+});
+
+const mapDispatchToProps = {
+  clearAlert: alertClear
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Routes);

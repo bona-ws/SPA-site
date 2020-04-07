@@ -11,7 +11,7 @@ exports.login = (req, res) => {
       if (!error) {
         response.ok(rows, res);
       } else {
-        console.log(error);
+        return error;
       }
     }
   );
